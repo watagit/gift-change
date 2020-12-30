@@ -28,5 +28,5 @@ yarn-error.log*
 .idea
 
 # firebase
-src/firebaseConfig.ts
 .firebase/
+src/firebase/config.ts
