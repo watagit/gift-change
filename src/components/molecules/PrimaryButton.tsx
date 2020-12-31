@@ -1,12 +1,12 @@
 import React from 'react'
 import { Button } from 'semantic-ui-react'
 
-const SigninButton: React.FC = () => {
+const PrimaryButton: React.FC<{ label: string }> = ({ label }) => {
   return (
     <Button primary>
-      Sign in
+      {label}
     </Button>
   )
 }
 
-export default SigninButton
+export default PrimaryButton
