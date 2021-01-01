@@ -1,7 +1,9 @@
 import React from 'react'
 
+import GlobalMenu from '../organisms/GlobalMenu'
+
 const Top: React.FC = () => {
-  return <div>Top</div>
+  return <GlobalMenu />
 }
 
 export default Top
