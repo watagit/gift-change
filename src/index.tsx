@@ -1,14 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
 import 'semantic-ui-css/semantic.min.css'
 import reportWebVitals from './reportWebVitals'
 
 import App from './App'
+import createStore from './reducks/store/store'
+
+export const store = createStore()
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 )
 

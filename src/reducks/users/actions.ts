@@ -1,7 +1,11 @@
+import { User } from './types'
+
+type PickUser = Pick<User, 'uid' | 'username'>
+
 export const SIGN_IN = 'SIGN_IN'
 export const SIGN_OUT = 'SIGN_OUT'
 
-export const signInAction = (userState: any) => {
+export const signInAction = (userState: PickUser) => {
   return {
     type: 'SIGN_IN',
     payload: {
