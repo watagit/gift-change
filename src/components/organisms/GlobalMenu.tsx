@@ -1,10 +1,7 @@
 import React from 'react'
 import { Menu } from 'semantic-ui-react'
 
-import PrimaryButton from '../molecules/PrimaryButton'
-import SecondaryButton from '../molecules/SecondaryButton'
-
-const GlobalMenu: React.FC = () => {
+const GlobalMenu: React.FC = ({ children }) => {
   return (
     <div>
       <Menu brderless secondary>
@@ -12,12 +9,7 @@ const GlobalMenu: React.FC = () => {
           ぎふちぇん！
         </Menu.Item>
         <Menu.Item position={'right'}>
-          <PrimaryButton
-            label={'Sign up'}
-            size={'medium'}
-            style={{ marginRight: '0.5em' }}
-          />
-          <SecondaryButton label={'Log in'} />
+          {children}
         </Menu.Item>
       </Menu>
     </div>
