@@ -4,17 +4,20 @@ import { Input } from 'semantic-ui-react'
 type TextFieldProps = {
   placeholder: string,
   icon: string,
+  fluid?: boolean,
 }
 
 const TextField: React.FC<TextFieldProps> = ({
   placeholder,
   icon,
+  fluid
 }) => {
   return (
     <Input
       icon={icon}
-      iconPosition={'left'}
       placeholder={placeholder}
+      fluid={fluid}
+      iconPosition={'left'}
     />
   )
 }
