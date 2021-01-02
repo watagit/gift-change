@@ -1,6 +1,46 @@
-import { signInAction } from './actions'
+import { signInAction, signOutAction } from './actions'
 import { push } from 'connected-react-router'
 import { auth, db, FirebaseTimestamp } from '../../firebase/index'
+
+export const listenAuthState = () => {
+  return async (dispatch: any) => {
+    return auth.onAuthStateChanged(user => {
+      if (user) {
+        const uid = user.uid
+
+        db.collection('users').doc(uid).get()
+          .then(snapshot => {
+            dispatch(signInAction({
+              isSignedIn: true,
+              uid: uid,
+              username: snapshot.get('username')
+            }))
+
+            dispatch(push('/home'))
+          })
+      } else {
+        dispatch(push('/signin'))
+      }
+    })
+  }
+}
+
+export const resetPassword = (email: string) => {
+  return async (dispatch: any) => {
+    if (email === '') {
+      alert('必須項目が未入力です')
+      return false
+    } else {
+      auth.sendPasswordResetEmail(email)
+        .then(() => {
+          alert('入力されたアドレスにパスワードリセット用のメールを送りました')
+          dispatch(push('/signin'))
+        }).catch(() => {
+          alert('パスワードリセットに失敗しました')
+      })
+    }
+  }
+}
 
 export const signIn = (email: string, password: string) => {
   return async (dispatch: any) => {
@@ -24,7 +64,7 @@ export const signIn = (email: string, password: string) => {
                 username: snapshot.get('username')
               }))
 
-              dispatch(push('/'))
+              dispatch(push('/home'))
             })
         }
       })
@@ -61,9 +101,19 @@ export const signUp = (username: string, email: string, password: string, confir
 
           db.collection('users').doc(uid).set(userInitialData)
             .then(() => {
-              dispatch(push('/'))
+              dispatch(push('/home'))
             })
         }
+      })
+  }
+}
+
+export const signOut = () => {
+  return async (dispatch: any) => {
+    auth.signOut()
+      .then(() => {
+        dispatch(signOutAction())
+        dispatch(push('/signin'))
       })
   }
 }
