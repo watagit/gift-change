@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react'
-import { Container, Form, Input } from 'semantic-ui-react'
+import { Container, Form, Header, Input } from 'semantic-ui-react'
 import { useDispatch } from 'react-redux'
 
 import { signUp } from '../../reducks/users/operations'
@@ -35,7 +35,12 @@ const SignUp: React.FC = () => {
       <Container>
         <GlobalMenu />
       </Container>
+      <br/>
       <Container text>
+        <Header as={'h1'} textAlign={'center'}>
+          Sign up
+        </Header>
+        <br/>
         <Form>
           <Form.Field>
             <label>ユーザ名</label>
