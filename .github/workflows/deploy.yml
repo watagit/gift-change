@@ -2,7 +2,7 @@ name: React, Firebase
 
 on:
   push:
-    branches: [deploy]
+    branches: [develop]
 
 jobs:
   build:
