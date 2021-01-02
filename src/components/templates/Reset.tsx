@@ -5,27 +5,21 @@ import {
   Form,
   Header,
   Input,
-  Message,
   Segment
 } from 'semantic-ui-react'
 
-import { signIn } from '../../reducks/users/operations'
+import { resetPassword } from '../../reducks/users/operations'
 import GlobalMenu from '../organisms/GlobalMenu'
 import PrimaryButton from '../molecules/PrimaryButton'
 
-const SignIn: React.FC = () => {
+const Reset: React.FC = () => {
   const dispatch = useDispatch()
 
-  const [email, setEmail] = useState(''),
-    [password, setPassword] = useState('')
+  const [email, setEmail] = useState('')
 
   const inputEmail = useCallback((event: any) => {
     setEmail(event.target.value)
   }, [setEmail])
-
-  const inputPassword = useCallback((event: any) => {
-    setPassword(event.target.value)
-  }, [setPassword])
 
   return (
     <div>
@@ -44,20 +38,12 @@ const SignIn: React.FC = () => {
               <label>メールアドレス</label>
               <Input placeholder={'email'} type={'email'} icon={'mail outline'} iconPosition={'left'} onChange={inputEmail} />
             </Form.Field>
-            <Form.Field>
-              <label>パスワード</label>
-              <Input placeholder={'password'} type={'password'} icon={'key'} iconPosition={'left'} onChange={inputPassword} />
-            </Form.Field>
-            <PrimaryButton  label={'Sign in'} fluid={false} onClick={() => dispatch(signIn(email, password))} />
+            <PrimaryButton  label={'Sign in'} fluid={false} onClick={() => dispatch(resetPassword(email))} />
           </Segment>
         </Form>
-        <Message attached='bottom'>
-          <p>登録がお済みでない方は&nbsp;<a href='/signup'>こちら</a>&nbsp;</p>
-          <p>パスワードを忘れた方は&nbsp;<a href='/signin/reset'>こちら</a>&nbsp;</p>
-        </Message>
       </Container>
     </div>
   )
 }
 
-export default SignIn
+export default Reset
