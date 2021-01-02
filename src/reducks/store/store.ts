@@ -3,7 +3,6 @@ import {
   combineReducers,
   applyMiddleware
 } from 'redux'
-import * as History from 'history'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
 
 import { UsersReducer } from '../users/reducers'
