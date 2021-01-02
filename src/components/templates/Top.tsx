@@ -20,6 +20,8 @@ const Top: React.FC = () => {
           label={'Sign up'}
           size={'medium'}
           style={{ marginRight: '0.5em' }}
+          fluid={false}
+          onClick={() => console.log('[Top]')}
         />
         <SecondaryButton label={'Log in'} />
       </GlobalMenu>

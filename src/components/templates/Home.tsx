@@ -62,9 +62,9 @@ const Home: React.FC = () => {
               onChange={handleAmountChange}
             />
           </Form.Field>
+          <br />
+          <RenderSubmitButton />
         </Form>
-        <br />
-        <RenderSubmitButton />
       </Container>
     </div>
   )
