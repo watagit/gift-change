@@ -1,6 +1,13 @@
 import React, { useCallback, useState } from 'react'
-import { Container, Form, Input } from 'semantic-ui-react'
 import { useDispatch } from 'react-redux'
+import {
+  Container,
+  Form,
+  Header,
+  Input,
+  Segment,
+  Message
+} from 'semantic-ui-react'
 
 import { signUp } from '../../reducks/users/operations'
 import GlobalMenu from '../organisms/GlobalMenu'
@@ -35,27 +42,40 @@ const SignUp: React.FC = () => {
       <Container>
         <GlobalMenu />
       </Container>
+      <br/>
       <Container text>
+        <Header as={'h1'} textAlign={'center'}>
+          Sign up
+        </Header>
+        <br/>
         <Form>
-          <Form.Field>
-            <label>ユーザ名</label>
-            <Input placeholder={'username'} type={'text'} icon={'user outline'} iconPosition={'left'} onChange={inputUsername} />
-          </Form.Field>
-          <Form.Field>
-            <label>メールアドレス</label>
-            <Input placeholder={'email'} type={'email'} icon={'mail outline'} iconPosition={'left'} onChange={inputEmail} />
-          </Form.Field>
-          <Form.Field>
-            <label>パスワード</label>
-            <Input placeholder={'password'} type={'password'} icon={'key'} iconPosition={'left'} onChange={inputPassword} />
-          </Form.Field>
-          <Form.Field>
-            <label>パスワード（確認用）</label>
-            <Input placeholder={'confirmation password'} type={'password'} icon={'key'} iconPosition={'left'} onChange={inputConfirmPassword} />
-          </Form.Field>
-          <br />
-          <PrimaryButton  label={'アカウントを登録する'} fluid={true} onClick={() => dispatch(signUp(username, email, password, confirmPassword))} />
+          <Segment>
+            <Form.Field>
+              <label>ユーザ名</label>
+              <Input placeholder={'username'} type={'text'} icon={'user outline'} iconPosition={'left'} onChange={inputUsername} />
+            </Form.Field>
+            <Form.Field>
+              <label>メールアドレス</label>
+              <Input placeholder={'email'} type={'email'} icon={'mail outline'} iconPosition={'left'} onChange={inputEmail} />
+            </Form.Field>
+            <Form.Field>
+              <label>パスワード</label>
+              <Input placeholder={'password'} type={'password'} icon={'key'} iconPosition={'left'} onChange={inputPassword} />
+            </Form.Field>
+            <Form.Field>
+              <label>パスワード（確認用）</label>
+              <Input placeholder={'confirmation password'} type={'password'} icon={'key'} iconPosition={'left'} onChange={inputConfirmPassword} />
+            </Form.Field>
+            <PrimaryButton
+              label={'Sign up'}
+              fluid={false}
+              onClick={() => dispatch(signUp(username, email, password, confirmPassword))}
+            />
+          </Segment>
         </Form>
+        <Message attached='bottom'>
+          アカウントをお持ちの方は&nbsp;<a href='/signin'>こちら</a>&nbsp;
+        </Message>
       </Container>
     </div>
   )

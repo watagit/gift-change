@@ -6,7 +6,7 @@ const GlobalMenu: React.FC = ({ children }) => {
     <div>
       <Menu brderless secondary>
         <Menu.Item position={'left'} header>
-          ぎふちぇん！
+          <a style={{ color: 'black' }} href={'/'}>ぎふちぇん！</a>
         </Menu.Item>
         <Menu.Item position={'right'}>
           {children}

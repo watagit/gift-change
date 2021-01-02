@@ -1,14 +1,16 @@
 import React from 'react'
 import { Container } from 'semantic-ui-react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { push } from 'connected-react-router'
 
+import { UserProps } from '../../reducks/users/types'
 import { getUserId, getUsername } from '../../reducks/users/selectors'
 import GlobalMenu from '../organisms/GlobalMenu'
 import PrimaryButton from '../molecules/PrimaryButton'
 import SecondaryButton from '../molecules/SecondaryButton'
-import {UserProps} from '../../reducks/users/types'
 
 const Top: React.FC = () => {
+  const dispatch = useDispatch()
   const selector = useSelector((state: UserProps) => state)
   const uid = getUserId(selector)
   const username = getUsername(selector)
@@ -21,9 +23,13 @@ const Top: React.FC = () => {
           size={'medium'}
           style={{ marginRight: '0.5em' }}
           fluid={false}
-          onClick={() => console.log('[Top]')}
+          onClick={() => dispatch(push('/signup'))}
         />
-        <SecondaryButton label={'Log in'} />
+        <SecondaryButton
+          label={'Sign in'}
+          fluid={false}
+          onClick={() => dispatch(push('/signin'))}
+        />
       </GlobalMenu>
       <div>
         <p>ユーザID：{uid}</p>
