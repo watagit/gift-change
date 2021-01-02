@@ -31,5 +31,3 @@ yarn-error.log*
 src/firebaseConfig.ts
 .firebase/
 src/firebase/config.ts
-
-.env.production
