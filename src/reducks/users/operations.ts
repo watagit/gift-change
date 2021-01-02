@@ -16,7 +16,7 @@ export const listenAuthState = () => {
               username: snapshot.get('username')
             }))
 
-            dispatch(push('/home'))
+            dispatch(push('/'))
           })
       } else {
         dispatch(push('/signin'))
@@ -64,7 +64,7 @@ export const signIn = (email: string, password: string) => {
                 username: snapshot.get('username')
               }))
 
-              dispatch(push('/home'))
+              dispatch(push('/'))
             })
         }
       })

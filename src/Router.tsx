@@ -2,7 +2,6 @@ import React from 'react'
 import { Switch, Route } from 'react-router'
 
 import {
-  Top,
   SignUp,
   Home,
   SignIn,
@@ -16,9 +15,8 @@ const Router = () => {
       <Route exact path={'/signup'} component={SignUp} />
       <Route exact path={'/signin/reset'} component={Reset} />
       <Route exact path={'/signin'} component={SignIn} />
-      <Route exact path={'(/)?'} component={Top} />
       <Auth>
-        <Route exact path={'/home'} component={Home} />
+        <Route exact path={'(/)?'} component={Home} />
       </Auth>
     </Switch>
   )
