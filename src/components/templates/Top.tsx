@@ -2,7 +2,7 @@ import React from 'react'
 import { Container } from 'semantic-ui-react'
 import { useSelector } from 'react-redux'
 
-import { getUserId } from '../../reducks/users/selectors'
+import { getUserId, getUsername } from '../../reducks/users/selectors'
 import GlobalMenu from '../organisms/GlobalMenu'
 import PrimaryButton from '../molecules/PrimaryButton'
 import SecondaryButton from '../molecules/SecondaryButton'
@@ -11,6 +11,7 @@ import {UserProps} from '../../reducks/users/types'
 const Top: React.FC = () => {
   const selector = useSelector((state: UserProps) => state)
   const uid = getUserId(selector)
+  const username = getUsername(selector)
 
   return (
     <Container>
@@ -23,7 +24,8 @@ const Top: React.FC = () => {
         <SecondaryButton label={'Log in'} />
       </GlobalMenu>
       <div>
-        <p>{uid}</p>
+        <p>ユーザID：{uid}</p>
+        <p>ユーザ名：{username}</p>
       </div>
     </Container>
   )
